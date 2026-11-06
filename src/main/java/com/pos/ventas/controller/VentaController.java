@@ -30,8 +30,9 @@ public class VentaController {
     }
 
     // Una venta no se borra: se anula y se devuelve el stock
+    // Una venta no se borra: se cancela y se devuelve el stock
     @DeleteMapping("/{id}")
-    public ResponseEntity<ResponseDTO> anular(@PathVariable Long id) {
+    public ResponseEntity<ResponseDTO> cancelar(@PathVariable Long id) {
         return ResponseEntity.ok(ventaService.anularVenta(id));
     }
 }

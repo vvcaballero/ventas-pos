@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface MovimientoInventarioRepository extends JpaRepository<MovimientoInventario, Long> {
 
-    List<MovimientoInventario> findByIdProductoOrderByFechaMovimientoDesc(Long idProducto);
+    List<MovimientoInventario> findByIdProductoOrderByFechaDesc(Long idProducto);
 
-    @Query("SELECT m FROM MovimientoInventario m ORDER BY m.fechaMovimiento DESC")
+    @Query("SELECT m FROM MovimientoInventario m ORDER BY m.fecha DESC")
     List<MovimientoInventario> findRecientes(Pageable pageable);
 }

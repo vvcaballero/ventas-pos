@@ -19,6 +19,8 @@ public class Venta {
     private Long idCliente;
     private Long idUsuario;
     private LocalDateTime fechaVenta;
+    private BigDecimal subtotal;
+    private BigDecimal descuento;
     private BigDecimal total;
-    private String estado;   // PENDIENTE | PAGADA | ANULADA
+    private String estado;   // PAGADA | CANCELADA
 }

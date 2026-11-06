@@ -75,9 +75,8 @@ public class ClienteServiceImpl implements ClienteService {
             if (existente.isPresent()) {
                 Cliente cli = existente.get();
                 cli.setNombre(request.getNombre());
-                cli.setDocumento(request.getDocumento());
                 cli.setTelefono(request.getTelefono());
-                cli.setCorreo(request.getCorreo());
+                cli.setEmail(request.getEmail());
                 cli.setDireccion(request.getDireccion());
                 if (request.getActivo() != null) {
                     cli.setActivo(request.getActivo());

@@ -40,7 +40,7 @@ public class InventarioServiceImpl implements InventarioService {
         ResponseDTO response = new ResponseDTO();
         try {
             response.setMensaje("OK");
-            response.setBody(movimientoRepository.findByIdProductoOrderByFechaMovimientoDesc(idProducto));
+            response.setBody(movimientoRepository.findByIdProductoOrderByFechaDesc(idProducto));
         } catch (Exception e) {
             response.setMensaje("Error al listar movimientos del producto: " + e.getMessage());
             response.setBody(null);
@@ -59,8 +59,8 @@ public class InventarioServiceImpl implements InventarioService {
         ResponseDTO response = new ResponseDTO();
         try {
             if (request == null || request.getIdProducto() == null || request.getCantidad() == null
-                    || request.getTipoMovimiento() == null) {
-                throw new IllegalArgumentException("Producto, tipo de movimiento y cantidad son obligatorios");
+                    || request.getTipoMovimiento() == null || request.getIdUsuario() == null) {
+                throw new IllegalArgumentException("Producto, tipo, cantidad y usuario son obligatorios");
             }
 
             String tipo = request.getTipoMovimiento().toUpperCase();
@@ -97,11 +97,11 @@ public class InventarioServiceImpl implements InventarioService {
 
             MovimientoInventario mov = new MovimientoInventario();
             mov.setIdProducto(prod.getIdProducto());
-            mov.setTipoMovimiento(tipo);
+            mov.setTipo(tipo);
             mov.setCantidad(cantidad);
             mov.setMotivo(request.getMotivo());
             mov.setIdUsuario(request.getIdUsuario());
-            mov.setFechaMovimiento(LocalDateTime.now());
+            mov.setFecha(LocalDateTime.now());
 
             response.setMensaje("OK");
             response.setBody(movimientoRepository.save(mov));

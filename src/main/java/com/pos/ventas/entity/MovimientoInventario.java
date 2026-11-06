@@ -16,9 +16,9 @@ public class MovimientoInventario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMovimiento;
     private Long idProducto;
-    private String tipoMovimiento;   // ENTRADA | SALIDA | AJUSTE
+    private Long idUsuario;
+    private String tipo;        // ENTRADA | SALIDA | AJUSTE
     private Integer cantidad;
     private String motivo;
-    private Long idUsuario;
-    private LocalDateTime fechaMovimiento;
+    private LocalDateTime fecha;
 }
