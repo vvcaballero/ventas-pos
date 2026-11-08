@@ -27,7 +27,11 @@ public class InventarioServiceImpl implements InventarioService {
         ResponseDTO response = new ResponseDTO();
         try {
             response.setMensaje("OK");
-            response.setBody(movimientoRepository.findAll(Sort.by(Sort.Direction.DESC, "fechaMovimiento")));
+            response.setBody(
+                    movimientoRepository.findAll(
+                            Sort.by(Sort.Direction.DESC, "fecha")
+                    )
+            );
         } catch (Exception e) {
             response.setMensaje("Error al listar movimientos: " + e.getMessage());
             response.setBody(null);
