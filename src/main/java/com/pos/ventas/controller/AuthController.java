@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestController
@@ -79,5 +80,16 @@ public class AuthController {
         }
 
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/version")
+    public Map<String, String> healthCheck() {
+
+        Map<String, String> response = new LinkedHashMap<>();
+
+        response.put("version", "1.0.0");
+        response.put("mensaje", "Servicio Ventas-pos funcionando correctamente");
+
+        return response;
     }
 }
