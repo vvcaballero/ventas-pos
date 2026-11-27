@@ -22,4 +22,9 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT p FROM Producto p WHERE p.idProducto = :id")
     Optional<Producto> findByIdForUpdate(@Param("id") Long id);
+
+    @Query("SELECT p FROM Producto p " +
+            "WHERE NOT (p.codigo LIKE 'Pedido-%' AND COALESCE(p.stock, 0) = 0)")
+    List<Producto> findProductosVisibles();
+
 }

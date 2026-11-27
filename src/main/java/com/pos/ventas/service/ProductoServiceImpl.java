@@ -21,7 +21,8 @@ public class ProductoServiceImpl implements ProductoService {
     public ResponseDTO listarProductos() {
         ResponseDTO response = new ResponseDTO();
         try {
-            List<Producto> lista = productoRepository.findAll();
+           // List<Producto> lista = productoRepository.findAll();
+            List<Producto> lista = productoRepository.findProductosVisibles();
             response.setMensaje("OK");
             response.setBody(lista);
         } catch (Exception e) {

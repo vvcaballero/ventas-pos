@@ -87,8 +87,8 @@ public class AuthController {
 
         Map<String, String> response = new LinkedHashMap<>();
 
-        response.put("version", "1.0.0");
-        response.put("mensaje", "Servicio Ventas-pos funcionando correctamente");
+        response.put("version", "1.0.1");
+        response.put("mensaje", "Servicio Ventas-pos funcionando correctamente +  exclision pedido donde sctok = 0  ");
 
         return response;
     }
